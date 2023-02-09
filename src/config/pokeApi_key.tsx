@@ -1,0 +1,1 @@
+export const POKEAPI_KEY =  "https://pokeapi.co/api/v2/pokemon"

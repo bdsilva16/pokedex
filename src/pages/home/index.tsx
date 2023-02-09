@@ -1,17 +1,16 @@
-import React, { useState } from "react";
-import { moveEmitHelpers } from "typescript";
+import React, { useState,useEffect } from "react";
+import { POKEAPI_KEY } from "../../config/pokeApi_key";
 import { Container, PokeList, Pokemon } from "./components";
 
 export default function Home(){
 
-    //const [pokemons, setPokemons] = useState<any[]>([])
+    const [pokemons, setPokemons] = useState<any[]>([])
 
-    const pokemons = [
-        {
-            title:"new",
-            poster_path:"https://assets.pokemon.com/assets/cms2/img/pokedex/full/151.png"
-        }
-    ]
+    useEffect(() => {
+        fetch (`https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${POKEAPI_KEY}`)
+            .then(response => response.json)
+            .then(data => setPokemons(data.results))
+        },[])
 
     return(
         <Container>
