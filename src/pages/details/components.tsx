@@ -1,1 +1,1 @@
-export const nada = "";
+export const nada = "#";

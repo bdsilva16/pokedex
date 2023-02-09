@@ -7,9 +7,9 @@ export default function Home(){
     const [pokemons, setPokemons] = useState<any[]>([])
 
     useEffect(() => {
-        fetch (`https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${POKEAPI_KEY}`)
-            .then(response => response.json)
-            .then(data => setPokemons(data.results))
+        fetch (`https://pokeapi.co/api/v2/${POKEAPI_KEY}`)
+            .then(response => response.json())
+            .then(info => setPokemons(info.pokemon))
         },[])
 
     return(
@@ -20,8 +20,8 @@ export default function Home(){
                     pokemons.map(pokemon => {
                         return(
                            <Pokemon>
-                                <a href="#"><img src={pokemon.poster_path} alt={pokemon.title}/></a>
-                                <span>{pokemon.title}</span>
+                                <a href="#"><img src={pokemon.poster_path} alt={pokemon.name}/></a>
+                                <span>{pokemon.name}</span>
                 
                             </Pokemon> 
                         )
